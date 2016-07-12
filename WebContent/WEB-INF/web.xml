@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+
+    <!-- 配置日志文件 加载路径-->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>		
+		<param-value>
+          	classpath:com/ssh/jd/conf/log4j.properties
+		</param-value>
+	</context-param>
+	
+	<!-- 配置日志文件加载监听接口类-->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- 配置上下文加载读取文件的路径 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+           classpath:com/ssh/jd/conf/spring/applicationContext.xml
+        </param-value>
+	</context-param>
+	
+	<!-- 配置上下文加载监听接口 -->
+	<listener>
+	    <listener-class>
+	    org.springframework.web.context.ContextLoaderListener
+	    </listener-class>
+	</listener>
+
+
+	<!-- 配置struts -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+			org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter
+		</filter-class>
+		<!-- 配置struts 配置文件的加载路径 -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+	  			struts-default.xml,
+	  			struts-plugin.xml,
+	  			com/ssh/jd/conf/struts/struts.xml
+				<!-- com/ssh/jd/conf/mystruts.xml -->
+			</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+
+
+	<display-name>jd</display-name>
+	<welcome-file-list>
+     <!-- 首页配置 -->
+     <!-- 
+		     使项目直接访问action（两步）
+		1、在web.xml中配置访问action路径
+		2、webRoot目录下提供一个虚拟路径
+      -->
+     <welcome-file>goods/goodsActionloadGoodsTypeList.action</welcome-file>
+  </welcome-file-list>
+</web-app>

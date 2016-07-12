@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" 
+"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!-- 交由spring管理 -->
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<!-- 开启动态方法调用开关 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    
+	<package name="goods" extends="struts-default" namespace="/goods">
+		<action name="goodsAction*" class="GoodsTypeAction" method="{1}">
+			<result name="firstPage">/index.jsp</result>
+			<allowed-methods>
+    			loadGoodsTypeList
+			</allowed-methods>
+		</action>
+	</package>
+
+</struts>
