@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-12 14:10:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.ssh.jd.model.goods.pojo.GoodsInfo" table="goodsinfo">
+		<id name="id" type="java.lang.String">
+			<column name="id" />
+			<generator class="uuid" />
+		</id>
+		<property name="goodsCode" type="java.lang.String">
+			<column name="goodsCode" />
+		</property>
+		<property name="goodsName" type="java.lang.String">
+			<column name="goodsName" />
+		</property>
+		<property name="price" type="java.lang.Double">
+			<column name="price" />
+		</property>
+		<property name="producer" type="java.lang.String">
+			<column name="producer" />
+		</property>
+		<property name="putaway" type="java.util.Date">
+			<column name="putaway" />
+		</property>
+		<property name="storeCount" type="java.lang.Integer">
+			<column name="storeCount" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+		<property name="img" type="java.lang.String">
+			<column name="img" />
+		</property>
+		<property name="typeCode" type="java.lang.String">
+			<column name="typeCode" />
+		</property>
+		<property name="commentCount" type="java.lang.Long">
+			<column name="commentCount" />
+		</property>
+	</class>
+</hibernate-mapping>

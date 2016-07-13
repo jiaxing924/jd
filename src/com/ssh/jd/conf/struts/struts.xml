@@ -8,13 +8,26 @@
 	<!-- 开启动态方法调用开关 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
     
+	<package name="user" extends="struts-default" namespace="/user">
+	    <action name="userAction*" class="UserAction" method="{1}">
+	        <result name="loginok">/index.jsp</result>
+	        <result name="failed">/login.jsp</result>
+	    	<allowed-methods>
+    			login
+			</allowed-methods>
+	    </action>
+	</package>
+	
 	<package name="goods" extends="struts-default" namespace="/goods">
-		<action name="goodsAction*" class="GoodsTypeAction" method="{1}">
+		<action name="goodsAction*" class="GoodsAction" method="{1}">
 			<result name="firstPage">/index.jsp</result>
+			<result name="goodsInfoListPage">/goodsList.jsp</result>
+			<result name="goodsDetailsPage">/goodsdetails.jsp</result>
 			<allowed-methods>
-    			loadGoodsTypeList
+    			loadGoodsTypeList,searchGoodsInfoList,loadGoodsDetails
 			</allowed-methods>
 		</action>
 	</package>
+	
 
 </struts>

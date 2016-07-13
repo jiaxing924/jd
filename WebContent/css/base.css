@@ -3405,10 +3405,11 @@ em, i, u {
 }
 .form .area, .form .itxt, .form .selt {
     line-height: 18px;
-    border: 1px solid #ccc;
-    padding: 5px;
+    border: 0px solid #ccc;
+    padding-left: 50px;
     vertical-align: middle;
     float: none;
+    ::-ms-clear, ::-ms-reveal{display: none;}
 }
 .form input {
     float: none;

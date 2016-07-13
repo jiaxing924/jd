@@ -15,7 +15,7 @@
 	<div class="w1">
 		<ul class="fr">
 			<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
-				<a href="login.html" class="link-login  style-red">JF_zhan，请登录</a>&nbsp;&nbsp;<a
+				<a href="login.jsp" class="link-login  style-red">请登录</a>&nbsp;&nbsp;<a
 				href="register.html" class="link-regist">免费注册</a>
 			</li>
 			<li class="spacer"></li>
@@ -82,7 +82,7 @@
                 <c:forEach items="${requestScope.goodsTypeList}" var="goodsType">
                     <div class="item fore1" data-index="1" clstag="h|keycount|2015|0501a">
                         <h3>
-                        <a target="_blank" href="#?typeCode=${goodsType.typeCode}">
+                        <a target="_blank" href="goods/goodsActionsearchGoodsInfoList.action?typeCode=${goodsType.typeCode}">
                         	${goodsType.typeName}	
                         </a></h3>
                         <i>&gt;</i>
