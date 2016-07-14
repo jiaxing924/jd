@@ -10,10 +10,15 @@
     
 	<package name="user" extends="struts-default" namespace="/user">
 	    <action name="userAction*" class="UserAction" method="{1}">
-	        <result name="loginok" type="redirect">${request.contextPath}/goods/goodsActionloadGoodsTypeList.action?name=${user.name}</result>
-	        <result name="failed">/login.jsp</result>
+	        <result name="loginok" type="redirectAction">
+	            <param name="namespace">/goods</param>
+	            <param name="actionName">goodsAction</param>
+	            <param name="method">loadGoodsTypeList</param>
+	        </result>
+	        <result name="failed" type="redirect">/login.jsp</result>
+	        <result name="registerok" type="redirect">/login.jsp</result>
 	    	<allowed-methods>
-    			login
+    			login,register
 			</allowed-methods>
 	    </action>
 	</package>

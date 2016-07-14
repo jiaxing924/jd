@@ -10,5 +10,5 @@ import com.ssh.jd.model.user.pojo.User;
  */
 public interface IUserService {
 	User login(User user)throws Exception;
-	User add(User user)throws Exception;
+	void register(User user)throws Exception;
 }

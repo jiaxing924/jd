@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.ssh.jd.model.user.dao.IUserDao;
@@ -21,6 +22,10 @@ public class UserDaoImp implements IUserDao {
 	@Resource(name="sessionFactory")
 	private SessionFactory sessionFactory;
 
+	/**
+	 * 通过用户名和密码查询用户信息
+	 * @return 单个用户信息或null
+	 */
 	public User login(User user) throws Exception {
 		String sql = "select id,name,password,phone,address,email,regDate"
 				+ " from user as u where u.name = ? and u.password = ?";
@@ -36,10 +41,18 @@ public class UserDaoImp implements IUserDao {
 		return (User) obj;
 	}
 
-	@Override
-	public User add(User user) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * 注册添加用户
+	 */
+	public void register(User user) throws Exception {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		System.out.println(user.getId() + "保存之前获取id");
+		session.save(user);
+		session.flush();
+		transaction.commit();
+		session.close();
+		System.out.println("保存之后获取：" + user.getId());
 	}
 
 }

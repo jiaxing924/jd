@@ -14,7 +14,7 @@
 <link href="<%=basePath%>css/base.css" rel="stylesheet">
 <script type="text/javascript" src="<%=basePath%>js/jquery-1.6.4.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript" language="javascript" >
 	function changerBuyQuantity(obj) {
 		if (obj === 1) {
 			$("#buy-num").val(parseInt($("#buy-num").val()) + 1);
@@ -25,11 +25,13 @@
 				$("#buy-num").val($("#buy-num").val() - 1);
 		}
 	}
-	function addGoodsCar() {
+	function addGoodsToCar(){
 		var goodsCode = $("#goodsCode").val();//获取商品编号
 		var buyNum = $("#buy-num").val();//获取购买数量
-
-		location.href = "../car/carActionaddOrUpdateGoods.action?goodsCode ="
+		
+        alert(goodsCode + "==="+buyNum);
+		//window.location.href = "https:www.baidu.com";
+		location.href = "http://localhost:8080/jd/car/carActionaddOrUpdateGoods.action?goodsCode ="
 				+ goodsCode + "&quantity=" + buynum + "";
 	}
 </script>
@@ -42,11 +44,11 @@
 			<ul class="fr">
 				<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
 					<a href="myjd.html" class="link-login  style-red"> <c:if
-							test="${not empty sessionScope.name }">
-					                       你好，${sessionScope.name }&nbsp;&nbsp;
+							test="${not empty sessionScope.currentUser.name }">
+					                       你好，${sessionScope.currentUser.name }&nbsp;&nbsp;
 					    <a href="<%=basePath%>login.jsp"> 退出</a>&nbsp;&nbsp;
 					    </c:if>
-					    <c:if test="${empty sessionScope.name }">
+					    <c:if test="${empty sessionScope.currentUser.name }">
 					        <a href="<%=basePath%>login.jsp" style="color: red;">请登录&nbsp;&nbsp;
 					    </c:if>
 				</a>
@@ -88,7 +90,7 @@
 			<div class="cw-icon">
 				<i class="ci-left"></i> <i class="ci-right">&gt;</i> <i
 					class="ci-count" id="shopping-amount">0</i> <a target="_blank"
-					href="car.html">我的购物车</a>
+					href="<%=basePath%>car.jsp">我的购物车</a>
 			</div>
 			<div class="dorpdown-layer">
 				<div class="spacer"></div>
@@ -180,15 +182,13 @@
 								onkeyup="setAmount.modify('#buy-num');" id="buy-num" value="1"
 								readonly="readonly"> <input type="hidden"
 								name="goodsCode" value="${requestScope.goodsInfo.goodsCode }"
-								id="goodsCode" /> <a class="btn-reduce"
-								onclick="changerBuyQuantity(0)" href="javascript:;">-</a> <a
-								class="btn-add" onclick="changerBuyQuantity(1)"
-								href="javascript:;">+</a>
+								id="goodsCode" /> 
+								<a class="btn-reduce" onclick="changerBuyQuantity(0)" href="javascript:;">-</a> 
+								<a class="btn-add" onclick="changerBuyQuantity(1)" href="javascript:;">+</a>
 						</div>
 					</div>
-					<a href="javascript:;" onclick="addGoodsToCar()" id="InitCartUrl"
-						class="btn-special1 btn-lg"
-						clstag="shangpin|keycount|product|加入购物车_2">加入购物车</a>
+					<a onclick="javascript:addGoodsToCar()" id="InitCartUrl"
+						class="btn-special1 btn-lg" href="#"  >加入购物车</a>
 				</div>
 			</div>
 

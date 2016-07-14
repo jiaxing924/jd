@@ -1,0 +1,317 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>购物车</title>
+<link href="<%=basePath %>css/base.css" rel="stylesheet">
+<script type="text/javascript" src="<%=basePath %>js/jquery-1.6.4.js"></script>
+<script type="text/javascript" language="javascript" >
+	function changerBuyQuantity(obj) {
+		if (obj === 1) {
+			$("#buy-num").val(parseInt($("#buy-num").val()) + 1);
+		} else {
+			if ($("#buy-num").val() <= 1)
+				$("#buy-num").val(1);
+			else
+				$("#buy-num").val($("#buy-num").val() - 1);
+		}
+	}
+	
+</script>
+
+</head>
+<body>
+<div id="shortcut-2014">
+    <div class="w">
+        <ul class="fr">
+            <li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b"> <a href="myjd.html" class="link-login  style-red">JF_zhan，</a>退出&nbsp;&nbsp;</li>
+            <li class="spacer"></li>
+            <li class="fore2" clstag="h|keycount|2015|01c">
+                <div class="dt">
+                    <a href="myjd.html">我的订单</a>
+                </div>
+            </li>
+            <li class="spacer"></li>
+            <li class="fore3" clstag="h|keycount|2015|01c">
+                <div class="dt">
+                    <a href="myjd.html">我的京东</a>
+                </div>
+            </li>
+
+        </ul>
+        <span class="clr"></span>
+    </div>
+</div>
+<div class="w header clearfix">
+    <div id="logo">
+        <a href="index.html" class="link1"><img src="img/logo-201305.png" alt="京东商城"></a>
+        <a href="#none" class="link2"><b></b>购物车</a>	</div>
+    <div class="cart-search">
+        <div class="form">
+            <input id="key" type="text" class="itxt" autocomplete="off" accesskey="s" style="color: rgb(153, 153, 153);">
+            <input type="button" class="button" value="搜索" clstag="clickcart|keycount|xincart|cart_search" onclick="javascript:void(0);">
+        </div>
+    </div>
+</div>
+
+<div id="container" class="cart">
+    <div class="w">
+        <div id="chunjie" class="mb10"></div>
+        <div class="cart-filter-bar">
+            <ul class="switch-cart">
+                <li class="switch-cart-item curr">
+                    <a href="#none">
+                        <em>全部商品</em>
+                        <span class="number">2</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="clr"></div>
+            <div class="w-line">
+                <div class="floater" style="width: 82px; left: 0px;"></div>
+            </div>
+            <div class="tab-con ui-switchable-panel-selected" style="display: block;"></div>
+            <div class="tab-con hide" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="cart-warp">
+        <div class="w">
+            <div id="jd-cart">
+                <div class="cart-main cart-main-new">
+                    <div class="cart-thead">
+                        <div class="column t-checkbox">
+                            <div class="cart-checkbox">
+                                <input type="checkbox" name="toggle-checkboxes" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_allCheck">
+                                <label for="">勾选全部商品</label>
+                            </div>
+                            全选
+                        </div>
+                        <div class="column t-goods">商品</div>
+                        <div class="column t-props"></div>
+                        <div class="column t-price">单价(元)</div>
+                        <div class="column t-quantity">数量</div>
+                        <div class="column t-sum">小计(元)</div>
+                        <div class="column t-action">操作</div>
+                    </div>
+                    <div id="cart-list">
+                        <div class="cart-item-list" id="cart-item-list-01">
+                            <div class="cart-tbody" id="vender_66621">
+                                <div class="shop">
+                                    <div class="cart-checkbox">
+                                        <input type="checkbox" name="checkShop" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_shop">
+                                        <label for="">勾选店铺内全部商品</label>
+                                    </div>
+		<span class="shop-txt">
+												<a class="shop-name" href="goodsdetails.html" target="_blank" id="venderId_66621" clstag="clickcart|keycount|xincart|cart_shopName" shopid="62888">海澜之家京东旗舰店</a><a class="btn-im" _vid="66621" href="javascript:;" clstag="pageclick|keycount|cart__201503041|4">联系客服</a>
+									</span>
+                                    <div class="shop-extra-r" id="shop-extra-r_66621" totalprice="156.00" venderfreight="10.00" freeshippingprice="68.00" venderid="66621" freightpattern="1" venderfreighttype="1" checkedskuids="10124632023,10124630019">购满￥68.00 已免运费 </div>
+                                </div>
+                                <div class="item-list" style="z-index: auto;">
+                                    <!--单品-->
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                    
+                                    <div class="item-single  item-item item-selected  " id="product_10124632023" style="z-index: auto;">
+                                        <div class="item-form">
+                                            <div class="cell p-checkbox">
+                                                <div class="cart-checkbox">
+                                                    <!--单品-->
+                                                    <input p-type="10124632023_1" type="checkbox" name="checkItem" value="10124632023_1" checked="checked" data-bind="cbid" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_sku">
+                                                    <label for="" class="checked">勾选商品</label>
+                                                    <span class="line-circle"></span>
+                                                </div>
+                                            </div>
+                                            <div class="cell p-goods">
+                                                <div class="goods-item">
+                                                    <div class="p-img">
+                                                        <a href="goodsdetails.html" target="_blank" class="J_zyyhq_10124632023"><img alt="海澜之家/Heilan Home2016夏季新品男装休闲短袖T恤HNTBJ2N214A" src="img/5715b71eN7498b3d5.jpg"></a>
+                                                    </div>
+                                                    <div class="item-msg">
+                                                        <div class="p-name">
+                                                            <a clstag="clickcart|keycount|xincart|cart_sku_name" href="goodsdetails.html" target="_blank">海澜之家/Heilan Home2016夏季新品男装休闲短袖T恤HNTBJ2N214A 漂白条纹(M7) 175/92Y</a>
+                                                        </div>
+                                                        <div class="p-extend">
+							<span class="promise" _giftcard="giftcard_10124632023">
+							</span>
+																					<span class="promise" _yanbao="yanbao_10124632023_">
+								<!--<i class="jd-service-icon"></i>
+								<a href="#none" class="ftx-03 jd-service" clstag="clickcart|keycount|xincart|cart_fuWu" data-tips="购买京东服务">购买京东服务</a>-->
+							</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cell p-props p-props-new">
+                                                <div class="props-txt" title="漂白条纹(M7)">颜色：漂白条纹(M7)</div>
+                                                <div class="props-txt" title="175/92Y">尺码：175/92Y</div>
+                                            </div>
+                                            <div class="cell p-price">
+                                                <strong>78.00</strong>
+                                            </div>
+                                            <div class="cell p-quantity">
+                                                <!--单品-->
+                                                <div class="quantity-form">
+                                                
+                                                    <!-- <input type="text" class="itxt" value="1" id="buy-num" 	readonly="readonly"/> -->
+<!--                                                     <a class="btn-reduce" onclick="changerBuyQuantity(0)" href="javascript:;">-</a>
+ -->                                                <a href="javascript:void(0);" onclick="changerBuyQuantity(0)" class="decrement" id="decrement_66621_10124632023_1_1">-</a>
+                                                <input autocomplete="off" type="text" class="itxt" value="1" id="buy-num">
+                                                   <a href="javascript:void(0);" onclick="changerBuyQuantity(1)"  class="increment" id="increment_66621_10124632023_1_1_0">+</a>
+                                                   
+<!--                                                    <a class="btn-add" onclick="changerBuyQuantity(1)" href="javascript:;">+</a>
+ -->                                                </div>
+                                                <div class="ac ftx-03 quantity-txt" _stock="stock_10124632023">有货</div>
+                                            </div>
+                                            <div class="cell p-sum">
+                                                <strong>78.00</strong>
+                                            </div>
+                                            <div class="cell p-ops">
+                                                <!--单品-->
+                                                <a id="remove_66621_10124632023_1" clstag="clickcart|keycount|xincart|cart_sku_del" data-name="海澜之家/Heilan Home2016夏季新品男装休闲..." data-more="removed_78.00_1" class="cart-remove" href="javascript:void(0);">删除</a>
+                                                <a href="javascript:void(0);" class="cart-follow" id="follow_66621_10124632023_1" clstag="clickcart|keycount|xincart|cart_sku_guanzhu">移到我的关注</a>
+                                            </div>
+                                        </div>
+                                        <div class="item-extra">
+                                        </div>
+                                        <div class="item-line"></div>
+                                    </div>
+
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                    <!-- 单品-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <div id="cart-floatbar" style="position: relative; top:60px;">
+                <div class="ui-ceilinglamp-1" style="width: 990px; height: 52px;"><div class="cart-toolbar" style="width: 988px; height: 50px;">
+                    <div class="toolbar-wrap">
+                        <div class="selected-item-list hide" style="display: none;">
+                        </div>
+                        <div class="options-box">
+                            <div class="select-all">
+                                <div class="cart-checkbox">
+                                    <input type="checkbox" id="toggle-checkboxes_down" name="toggle-checkboxes" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_allCheckDown">
+                                    <label for="">勾选全部商品</label>
+                                </div>
+                                全选
+                            </div>
+                            <div class="operation">
+                                <a href="#none" clstag="clickcart|keycount|xincart|cart_somesku_del" class="remove-batch">删除选中的商品</a>
+                            </div>
+                            <div class="clr"></div>
+                            <div class="toolbar-right">
+                                <div class="normal">
+                                    <div class="comm-right">
+                                        <div class="btn-area">
+                                            <a href="jiesuan.html" target="_blank" class="submit-btn" data-bind="1">
+                                                去结算
+                                                <b></b>
+                                            </a>
+                                            <!-- <a href="javascript:void(0);" class="submit-btn submit-btn-disabled">
+                                            去结算<b></b></a> -->
+                                        </div>
+                                        <div class="price-sum">
+                                            <div>
+                                                <span class="txt">总价（不含运费）：</span>
+                                                <span class="price sumPrice"><em data-bind="156.00">￥156.00</em></span>
+                                                <br>
+                                                <span class="txt">已节省：</span>
+                                                <span class="price totalRePrice">- ￥0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="amount-sum">
+                                            已选择<em>1</em>件商品<b class="up" clstag="clickcart|keycount|xincart|cart_thumbnailOpen"></b>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                                <div class="combine" style="display: none;">
+                                    <div class="comm-right">
+                                        <div class="btn-area">
+                                            <a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrderOut" class="jdInt-submit-btn">
+                                                去全球购结算<b></b></a>
+                                            <a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrder" class="common-submit-btn">
+                                                去京东结算<b></b></a>
+                                        </div>
+                                        <div class="price-sum">
+                                            <div>
+                                                <span class="txt">总价（不含运费）：</span>
+                                                <span class="price sumPrice"><em data-bind="156.00">?156.00</em></span>
+                                                <br>
+                                                <span class="txt">已节省：</span>
+                                                <span class="price totalRePrice">- ?0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="amount-sum">
+                                            已选择<em>2</em>件商品<b class="up"></b>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                    <div class="clr"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clr"></div>
+<footer  style="position: relative; top: 90px">
+    <div id="service-2014" clstag="h|keycount|2015|32a">
+        <div class="slogen">
+		<span class="item fore1">
+			<img src="img/service_items_1.png" style="margin-left: 40px">
+		</span>
+		<span class="item fore2">
+			<img src="img/service_items_2.png" style="margin-left: 80px" >
+		</span>
+		<span class="item fore3">
+			<img src="img/service_items_3.png" style="margin-left: 80px">
+		</span>
+		<span class="item fore4">
+			<img src="img/service_items_4.png" style="margin-left: 80px">
+		</span>
+        </div>
+    </div>
+    <div id="footer-2014" clstag="h|keycount|2015|33a">
+        <div class="links"><a rel="nofollow" target="_blank" href="#">关于我们</a>|<a rel="nofollow" target="_blank" href="#">联系我们</a>|<a rel="nofollow" target="_blank" href="#">商家入驻</a>|<a rel="nofollow" target="_blank" href="#">营销中心</a>|<a rel="nofollow" target="_blank" href="#">手机京东</a>|<a target="_blank" href="#">友情链接</a>|<a target="_blank" href="#">销售联盟</a>|<a href="//club.jd.com/" target="_blank">京东社区</a>|<a href="#" target="_blank">京东公益</a>|<a href="#" target="_blank">English Site</a>|<a href="#" target="_blank">Contact Us</a></div>
+        <div class="copyright"><a target="_blank" href="img/56a0a994Nf1b662dc.png"> 京公网安备 11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br>互联网出版许可证编号新出网证(京)字150号&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow" href="#" target="_blank">出版物经营许可证</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;|&nbsp;&nbsp;违法和不良信息举报电话：4006561155<br>Copyright&nbsp;?&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;消费者维权热线：4006067733<br>京东旗下网站：<a href="#" target="_blank">京东钱包</a>
+        </div>
+        <div class="authentication">
+            <a rel="nofollow" target="_blank" href="#">
+                <img width="103" height="32" alt="经营性网站备案中心" src="img/54b8871eNa9a7067e.png" class="err-product">
+            </a>
+
+            <a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="#">
+                <img border="true" width="103" height="32" alt="可信网站" src="img/54b8872dNe37a9860.png" class="err-product">
+            </a>
+            <a rel="nofollow" target="_blank" href="#">
+                <img width="103" height="32" alt="网络警察" src="img/56a89b8fNfbaade9a.jpg" class="err-product">
+            </a>
+            <a rel="nofollow" target="_blank" href="#">
+                <img width="103" height="32" src="img/54b8875fNad1e0c4c.png" class="err-product">
+            </a>
+            <a target="_blank" href="#"><img width="103" height="32" src="img/5698dc03N23f2e3b8.jpg"></a>
+            <a target="_blank" href="#"><img width="103" height="32" src="img/5698dc16Nb2ab99df.jpg"></a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

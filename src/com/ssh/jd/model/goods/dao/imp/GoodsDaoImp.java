@@ -57,7 +57,7 @@ public class GoodsDaoImp implements IGoodsDao {
 
 	/**
 	 * 通过goodsCode(商品码)加载对应商品的所有信息
-	 * @return
+	 * @return 某件商品所有信息
 	 */
 	public GoodsInfo loadGoodsDetailsByGoodsCode(String goodsCode) throws Exception {
 		String hql = "from GoodsInfo where goodsCode = '" + goodsCode + "'";

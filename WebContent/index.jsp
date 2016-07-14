@@ -21,15 +21,15 @@
 		<ul class="fr">
 			<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
 				<a href="<%=basePath %>login.jsp" class="link-login  style-red">你好，
-				<c:if test="${not empty param.name }">
-				        ${param.name }
+				<c:if test="${not empty sessionScope.currentUser }">
+				        ${sessionScope.currentUser.name }
 				    &nbsp;&nbsp;<a href="<%=basePath %>login.jsp" class="link-login">退出</a>
 				</c:if>
-				<c:if test="${empty param.name }">
+				<c:if test="${empty sessionScope.currentUser.name }">
 				        请登录
 					</a>&nbsp;&nbsp;
 					<a href="<%=basePath %>register.jsp" class="link-regist">免费注册</a>
-				</c:if>
+				</c:if> 
 			</li>
 			<li class="spacer"></li>
 			<li class="fore2" clstag="h|keycount|2015|01c">

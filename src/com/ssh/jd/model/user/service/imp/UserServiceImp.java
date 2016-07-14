@@ -19,12 +19,18 @@ public class UserServiceImp implements IUserService {
 	@Resource(name = "UserDaoImp")
 	private IUserDao dao;
 	
+	/**
+	 * 验证登陆
+	 */
 	public User login(User user) throws Exception {
 		return dao.login(user);
 	}
 
-	public User add(User user) throws Exception {
-		return dao.add(user);
+	/**
+	 * 注册添加用户
+	 */
+	public void register(User user) throws Exception {
+		dao.register(user);
 	}
 
 }

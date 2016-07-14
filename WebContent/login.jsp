@@ -16,7 +16,7 @@
 <body>
 	<div class="w">
 		<div id="logo1">
-			<a href="index.html"> <img src="<%=basePath %>img/logo.png" alt="京东"
+			<a href="#"> <img src="<%=basePath %>img/logo.png" alt="京东"
 				width="170" height="60">
 			</a> <b></b>
 		</div>
@@ -30,7 +30,7 @@
 							<h1>京东会员</h1>
 							<div class="extra-r">
 								<div class="regist-link">
-									<a href="register.html" target="_blank"><b></b>立即注册</a>
+									<a href="register.jsp" target="_blank"><b></b>立即注册</a>
 								</div>
 							</div>
 						</div>
@@ -76,10 +76,7 @@
 									</div>
 									<div class="item item-fore5">
 										<div class="login-btn">
-											<a href="javascript:;" class="btn-img btn-entry"
-												id="loginsubmit" tabindex="6"
-												clstag="pageclick|keycount|20150112ABD|2">登&nbsp;&nbsp;&nbsp;&nbsp;录</a>
-											<input type="submit" value="登陆"/>
+											<input type="submit" value="登    陆" class="btn-img btn-entry"/>
 										</div>
 									</div>
 								</form>
