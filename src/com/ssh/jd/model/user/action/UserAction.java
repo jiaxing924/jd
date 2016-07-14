@@ -1,7 +1,9 @@
 package com.ssh.jd.model.user.action;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -15,7 +17,7 @@ import com.ssh.jd.model.user.service.IUserService;
  * @date 2016年7月12日 下午1:13:48
  */
 @Controller("UserAction")
-@Scope(value="prototype")//作用范围，每次请求都是一个新的action
+@Scope(value = "prototype") // 作用范围，每次请求都是一个新的action
 public class UserAction {
 
 	private User user;
@@ -30,15 +32,19 @@ public class UserAction {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	/**
 	 * 验证登陆方法
 	 * @return loginok or failed
 	 */
-	public String login(){
+	public String login() {
+		
 		try {
 			User u = service.login(user);
-			if(u!=null){
+			System.out.println("可以登录");
+			if (u != null) {
+				HttpSession session = ServletActionContext.getRequest().getSession(); 
+				session.setAttribute("name", u.getName());
 				return "loginok";
 			}
 		} catch (Exception e) {

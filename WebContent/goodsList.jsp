@@ -19,7 +19,15 @@
 		<div class="w">
 			<ul class="fr">
 				<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
-					<a href="myjd.html" class="link-login  style-red">JF_zhan，</a>退出&nbsp;&nbsp;
+					<a href="myjd.html" class="link-login  style-red">
+					    <c:if test="${not empty sessionScope.name }">
+					                       你好，${sessionScope.name }&nbsp;&nbsp;
+					       <a href="<%=basePath%>login.jsp" > 退出</a>&nbsp;&nbsp;
+					    </c:if>
+					     <c:if test="${empty sessionScope.name }">
+					        <a href="<%=basePath%>login.jsp" style="color: red;">请登录&nbsp;&nbsp;
+					    </c:if>
+					</a>
 				</li>
 				<li class="spacer"></li>
 				<li class="fore2" clstag="h|keycount|2015|01c">

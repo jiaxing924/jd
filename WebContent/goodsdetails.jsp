@@ -13,13 +13,43 @@
 <title>产品详情页</title>
 <link href="<%=basePath%>css/base.css" rel="stylesheet">
 <script type="text/javascript" src="<%=basePath%>js/jquery-1.6.4.js"></script>
+
+<script type="text/javascript">
+	function changerBuyQuantity(obj) {
+		if (obj === 1) {
+			$("#buy-num").val(parseInt($("#buy-num").val()) + 1);
+		} else {
+			if ($("#buy-num").val() <= 1)
+				$("#buy-num").val(1);
+			else
+				$("#buy-num").val($("#buy-num").val() - 1);
+		}
+	}
+	function addGoodsCar() {
+		var goodsCode = $("#goodsCode").val();//获取商品编号
+		var buyNum = $("#buy-num").val();//获取购买数量
+
+		location.href = "../car/carActionaddOrUpdateGoods.action?goodsCode ="
+				+ goodsCode + "&quantity=" + buynum + "";
+	}
+</script>
+
+
 </head>
 <body>
 	<div id="shortcut-2014">
 		<div class="w">
 			<ul class="fr">
 				<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
-					<a href="myjd.html" class="link-login  style-red">JF_zhan，</a>退出&nbsp;&nbsp;
+					<a href="myjd.html" class="link-login  style-red"> <c:if
+							test="${not empty sessionScope.name }">
+					                       你好，${sessionScope.name }&nbsp;&nbsp;
+					    <a href="<%=basePath%>login.jsp"> 退出</a>&nbsp;&nbsp;
+					    </c:if>
+					    <c:if test="${empty sessionScope.name }">
+					        <a href="<%=basePath%>login.jsp" style="color: red;">请登录&nbsp;&nbsp;
+					    </c:if>
+				</a>
 				</li>
 				<li class="spacer"></li>
 				<li class="fore2" clstag="h|keycount|2015|01c">
@@ -141,18 +171,23 @@
 					     </c:if>
 					<c:if test="${requestScope.goodsInfo.storeCount==0 }">无货</c:if>
 				</div>
+
 				<div id="choose-btns" class="choose-btns clearfix">
 					<div class="choose-amount"
 						clstag="shangpin|keycount|product|goumaishuliang_2">
 						<div class="wrap-input">
 							<input class="text buy-num"
-								onkeyup="setAmount.modify('#buy-num');" id="buy-num" value="1">
-							<a class="btn-reduce" onclick="setAmount.reduce('#buy-num')"
-								href="javascript:;">-</a> <a class="btn-add"
-								onclick="setAmount.add('#buy-num')" href="javascript:;">+</a>
+								onkeyup="setAmount.modify('#buy-num');" id="buy-num" value="1"
+								readonly="readonly"> <input type="hidden"
+								name="goodsCode" value="${requestScope.goodsInfo.goodsCode }"
+								id="goodsCode" /> <a class="btn-reduce"
+								onclick="changerBuyQuantity(0)" href="javascript:;">-</a> <a
+								class="btn-add" onclick="changerBuyQuantity(1)"
+								href="javascript:;">+</a>
 						</div>
 					</div>
-					<a href="car.html" id="InitCartUrl" class="btn-special1 btn-lg"
+					<a href="javascript:;" onclick="addGoodsToCar()" id="InitCartUrl"
+						class="btn-special1 btn-lg"
 						clstag="shangpin|keycount|product|加入购物车_2">加入购物车</a>
 				</div>
 			</div>
@@ -170,87 +205,88 @@
 						<ul>
 							<li data-tab="trigger"
 								clstag="shangpin|keycount|product|allpingjia_2" class="current"
-								data-num="4602"><a href="javascript:;">全部评论<em>(4602)</em></a></li>
-							<li data-tab="trigger" clstag="shangpin|keycount|product|shaipic"
-								data-num="376"><a href="javascript:;">晒图<em>(376)</em></a></li>
+								data-num="4602"><a href="javascript:;">全部评论<em>(${requestScope.all})</em></a>
+							</li>
 							<li data-tab="trigger"
-								clstag="shangpin|keycount|product|haoping_2" data-num="4216"><a
-								href="javascript:;">好评<em>(4216)</em></a></li>
+								clstag="shangpin|keycount|product|haoping_2" data-num="4216">
+								<a href="javascript:;">好评<em>(${requestScope.a})</em></a>
+							</li>
 							<li data-tab="trigger"
-								clstag="shangpin|keycount|product|zhongping_2" data-num="235"><a
-								href="javascript:;">中评<em>(235)</em></a></li>
+								clstag="shangpin|keycount|product|zhongping_2" data-num="235">
+								<a href="javascript:;">中评<em>(${requestScope.b})</em></a>
+							</li>
 							<li data-tab="trigger"
-								clstag="shangpin|keycount|product|chaping_2" data-num="151"><a
-								href="javascript:;">差评<em>(151)</em></a></li>
-							<li clstag="shangpin|keycount|product|sybg-bq"
-								style="display: none;"><a href="#try-report">试用报告<em>()</em></a></li>
+								clstag="shangpin|keycount|product|chaping_2" data-num="151">
+								<a href="javascript:;">差评<em>(${requestScope.c})</em></a>
+							</li>
 					</div>
 					<div class="tab-con">
 						<div id="comment-0" data-tab="item">
 							<div class="com-table-main">
-								<!---->
-								<div class="comments-item"
-									data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065" data-top="">
-									<div class="com-item-main clearfix">
-										<div class="column column1">
-											<div class="grade-star g-star5"></div>
-											<div class="comment-day type-item">下单6天后评论</div>
-											<div class="comment-time type-item">2016-06-17 12:31</div>
-											<div class="features type-item">
-												<ul class="clearfix">
-													<li>短袖 - 藏青</li>
-													<li>175</li>
-												</ul>
-											</div>
-										</div>
-										<div class="column column2"
-											data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065">
-											<div class="p-comment">不错，修身，材质也不错</div>
-											<div class="p-otherFeatures">
-												<ul class="clearfix">
-												</ul>
-											</div>
-											<div class="comment-operate">
-												<a class="nice J-nice" href="javascript:;"
-													data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065" title="0">点赞（0）</a>
-												<a class="replylz J-reply-trigger" href="javascript:;"
-													data-replylz="1">回复（0）</a>
-												<div class="reply-textarea J-reply-con hide">
-													<div class="reply-arrow">
-														<b class="layer1"></b><b class="layer2"></b>
-													</div>
-													<div class="inner">
-														<textarea class="reply-input J-reply-input"
-															placeholder="回复 j***a：" maxlength="120"></textarea>
-														<div class="operate-box">
-															<span class="txt-countdown">还可以输入<em>120</em>字
-															</span> <a class="reply-submit J-submit-reply J-submit-reply-lz"
-																href="javascript:;" target="_self" data-nick="j***a"
-																data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065"
-																data-replyid="1632301982">提交</a>
+
+								<!-- 开始处理评价-->
+								<c:forEach items="${requestScope.commentList }" var="comment">
+									<div class="comments-item"
+										data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065" data-top="">
+										<div class="com-item-main clearfix">
+											<div class="column column1">
+												<c:choose>
+													<c:when test="${comment.star eq 5 }">
+														<div class="grade-star g-star5"></div>
+													</c:when>
+													<c:when test="${comment.star eq 4 }">
+														<div class="grade-star g-star4">
+															<img src="../img/star4.png" />
 														</div>
-													</div>
+													</c:when>
+													<c:when test="${comment.star eq 3 }">
+														<div class="grade-star g-star3">
+															<img src="../img/star3.png" />
+														</div>
+													</c:when>
+													<c:when test="${comment.star eq 2 }">
+														<div class="grade-star g-star2">
+															<img src="../img/star2.png" />
+														</div>
+													</c:when>
+													<c:when test="${comment.star eq 1 }">
+														<div class="grade-star g-star1">
+															<img src="../img/star1.png" />
+														</div>
+													</c:when>
+
+												</c:choose>
+
+												<div class="comment-time type-item">${comment.releaseDate }</div>
+											</div>
+											<div class="column column2"
+												data-guid="3aff98bd-9930-4d57-a3fe-c97b568a0065">
+												<div class="p-comment">${comment.comments }</div>
+												<div class="p-otherFeatures">
+													<ul class="clearfix">
+													</ul>
 												</div>
+
+												<div class="comment-replylist"></div>
 											</div>
-											<div class="comment-replylist"></div>
-										</div>
-										<div class="column column3">
-											<div class="user-item clearfix">
-												<img src="<%=basePath %>img/b56.gif" width="25px" height="25px"
-													alt="j***a" class="user-ico">
-												<div class="user-name">j***a</div>
-											</div>
-											<div class="type-item">
-												<span class="u-vip-level" style="color:">铜牌会员</span>
-											</div>
-											<div class="user-item" data-cid="2">
-												<span class="user-access"><a
-													href="http://app.jd.com/iphone.html" target="_blank">来自京东iPhone客户端</a></span>
+											<div class="column column3">
+												<div class="user-item clearfix">
+													<div class="user-name">匿名评论</div>
+												</div>
+												<div class="type-item">
+													<img src="<%=basePath%>img/b56.gif" width="25px"
+														height="25px" alt="j***a" class="user-ico"> <span
+														class="u-vip-level" style="color:">京东会员</span>
+												</div>
+												<div class="user-item" data-cid="2">
+													<span></span>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<!---->
+								</c:forEach>
+
+								<!--评价处理结束-->
 								<div id="comment-1" data-tab="item" class="hide">
 									<div class="iloading">正在加载中，请稍候...</div>
 								</div>
