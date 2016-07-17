@@ -36,7 +36,7 @@
 						</div>
 						<div class="mc">
 							<div class="form">
-								<form action="user/userActionlogin.action" id="formlogin" method="post" >
+								<form action="<%=basePath %>user/userActionlogin.action" id="formlogin" method="post" >
 									<input type="hidden" id="uuid" name="uuid"
 										value="b32e6d7f-925f-4d62-9836-13c535cf9a11" /> <input
 										type="hidden" name="machineNet" id="machineNet" value=""

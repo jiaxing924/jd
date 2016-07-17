@@ -20,6 +20,28 @@ public class GoodsInfo {
 	private String img;
 	private String typeCode;
 	private Long commentCount;
+	
+	//非持久化字段
+	private int quantity;//购买数量
+	private double subtotal;//商品购买小计
+	
+	
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
 
 	public String getId() {
 		return id;

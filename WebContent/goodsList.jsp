@@ -66,7 +66,7 @@
 			<div class="cw-icon">
 				<i class="ci-left"></i> <i class="ci-right">&gt;</i> <i
 					class="ci-count" id="shopping-amount">0</i> <a target="_blank"
-					href="car.html">我的购物车</a>
+					href="<%=basePath%>car.jsp">我的购物车</a>
 			</div>
 			<div class="dorpdown-layer">
 				<div class="spacer"></div>

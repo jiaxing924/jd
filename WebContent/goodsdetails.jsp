@@ -31,8 +31,8 @@
 		
         alert(goodsCode + "==="+buyNum);
 		//window.location.href = "https:www.baidu.com";
-		location.href = "http://localhost:8080/jd/car/carActionaddOrUpdateGoods.action?goodsCode ="
-				+ goodsCode + "&quantity=" + buynum + "";
+        location.href = "<%=basePath%>car/carActionaddOrUpdate.action?goodsCode="+goodsCode
+        		+"&quantity="+buyNum+"";
 	}
 </script>
 
@@ -43,13 +43,13 @@
 		<div class="w">
 			<ul class="fr">
 				<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
-					<a href="myjd.html" class="link-login  style-red"> <c:if
-							test="${not empty sessionScope.currentUser.name }">
-					                       你好，${sessionScope.currentUser.name }&nbsp;&nbsp;
-					    <a href="<%=basePath%>login.jsp"> 退出</a>&nbsp;&nbsp;
-					    </c:if>
+					<a href="myjd.html" class="link-login  style-red"> 
+						<c:if test="${not empty sessionScope.currentUser.name }">
+						                       你好，${sessionScope.currentUser.name }&nbsp;&nbsp;
+						    <a href="<%=basePath%>login.jsp"> 退出</a>&nbsp;&nbsp;
+						</c:if>
 					    <c:if test="${empty sessionScope.currentUser.name }">
-					        <a href="<%=basePath%>login.jsp" style="color: red;">请登录&nbsp;&nbsp;
+					        <a href="<%=basePath%>login.jsp" style="color: red;">请登录&nbsp;&nbsp;</a>
 					    </c:if>
 				</a>
 				</li>

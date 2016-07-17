@@ -34,5 +34,15 @@
 		</action>
 	</package>
 	
+	<package name="car" extends="struts-default" namespace="/car">
+	    <action name="carAction*" class="CarAction" method="{1}">
+	        <result name="doLogin">/login.jsp</result>
+	        <result name="showCar">/car.jsp</result>
+	        <allowed-methods>
+	        addOrUpdate,removeGoods
+	        </allowed-methods>
+	    </action>
+	</package>
+	
 
 </struts>
