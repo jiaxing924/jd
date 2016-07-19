@@ -38,11 +38,27 @@
 	    <action name="carAction*" class="CarAction" method="{1}">
 	        <result name="doLogin">/login.jsp</result>
 	        <result name="showCar">/car.jsp</result>
+	        <result name="removesuceess">/car.jsp</result>
+	        <result name="removeOk" type="redirect">/car.jsp</result>
 	        <allowed-methods>
-	        addOrUpdate,removeGoods
+	        addOrUpdate,removeGoods,removeSingleGoods
 	        </allowed-methods>
 	    </action>
 	</package>
 	
+	<package name="order" extends="struts-default" namespace="/order">
+	    <action name="orderAction*" class="OrderAction" method="{1}">
+	        <result name="doLogin">/login.jsp</result>
+	        <result name="showOrder">/order.jsp</result>
+	        <result name="addSuccess" type="redirectAction">
+	            <param name="namespace">/order</param>
+	            <param name="actionName">OrderAction</param>
+	            <param name="method">showOrder</param>
+	        </result>
+	        <allowed-methods>
+	        showOrder,addOrder
+	        </allowed-methods>
+	    </action>
+	</package>
 
 </struts>

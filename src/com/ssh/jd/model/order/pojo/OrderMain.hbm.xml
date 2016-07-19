@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-18 13:24:06 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.ssh.jd.model.order.pojo.OrderMain" table="ordermain">
+        <id name="orderCode" type="java.lang.String">
+            <column name="orderCode" />
+            <generator class="uuid" />
+        </id>
+        <property name="id" type="java.lang.String">
+            <column name="id" />
+        </property>
+        <property name="owner" type="java.lang.String">
+            <column name="owner" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" />
+        </property>
+        <property name="confirmTime" type="java.util.Date">
+            <column name="confirmTime" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" />
+        </property>
+    </class>
+</hibernate-mapping>

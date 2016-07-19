@@ -2520,6 +2520,7 @@ em, i, u {
 .cart-tbody .item-item .cell {
     float: left;
     padding: 15px 0 10px;
+    height:80px;
 }
 .cart-tbody .item-item .p-quantity .quantity-form {
     position: relative;
@@ -2599,7 +2600,7 @@ em, i, u {
     font-weight: 700;
 }
 .cart-tbody .item-item .p-ops {
-    width: 75px;
+    width: 265px;
 }
 .cart-tbody .item-item .p-ops a {
     color: #666;

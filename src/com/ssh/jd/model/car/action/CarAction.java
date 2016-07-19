@@ -24,7 +24,6 @@ public class CarAction {
 	@Resource(name = "CarServiceImp")
 	private ICarService carService;
 
-	private Car car1;
 	private double total;
 	private String goodsCode;// 传入商品编号
 	private int quantity;// 传入购买数量
@@ -42,9 +41,7 @@ public class CarAction {
 				GoodsInfo goods = carService.searchGoodsInfoByGoodsCode(goodsCode);
 				goods.setQuantity(quantity);// 设置购买数量
 				car.addOrUpdate(goods);// 添加商品到购物车
-				Car car1 = new Car();
-				car1 = car;
-				System.out.println("+++"+car1.getTotal());
+				System.out.println("+++"+car.getTotal());
 				System.out.println("action 的 addOrUpdate+++++++");
 			}
 		} catch (Exception e) {
@@ -83,7 +80,26 @@ public class CarAction {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return "removesuceess";
+	}
+	
+	/**
+	 * 移除购物车单个商品
+	 * @return String
+	 */
+	public String removeSingleGoods() {
+		Car car = validLoginAndGetCar();// 验证登陆并获取购物车
+		try {
+			if (car == null) {// 未登陆
+				return "doLogin";
+			} else {// 已登陆并拥有购物车
+				GoodsInfo goods = carService.searchGoodsInfoByGoodsCode(goodsCode);
+				car.removeGoods(goods);//获取该商品信息，然后删除掉
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "removeOk";
 	}
 
 	public String getGoodsCode() {
@@ -102,14 +118,6 @@ public class CarAction {
 		this.quantity = quantity;
 	}
 
-
-	public Car getCar1() {
-		return car1;
-	}
-
-	public void setCar1(Car car1) {
-		this.car1 = car1;
-	}
 
 	public double getTotal() {
 		return total;

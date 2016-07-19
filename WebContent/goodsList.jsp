@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -65,7 +66,7 @@
 		<div id="settleup-2014" class="dorpdown" clstag="h|keycount|2015|04a">
 			<div class="cw-icon">
 				<i class="ci-left"></i> <i class="ci-right">&gt;</i> <i
-					class="ci-count" id="shopping-amount">0</i> <a target="_blank"
+					class="ci-count" id="shopping-amount">${fn:length(sessionScope.car)}</i> <a target="_blank"
 					href="<%=basePath%>car.jsp">我的购物车</a>
 			</div>
 			<div class="dorpdown-layer">

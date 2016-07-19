@@ -64,6 +64,7 @@ public class Car extends ArrayList<GoodsInfo> {
 				localTotal += goods.getSubtotal();
 			}
 			total = localTotal;
+			count = this.size();
 		}
 		System.out.println("总价："+total);
 	}
@@ -75,9 +76,15 @@ public class Car extends ArrayList<GoodsInfo> {
 	public void removeGoods(GoodsInfo goodsInfo){
 		GoodsInfo goods = isContainer(goodsInfo);
 		if(goods != null){
-			this.remove(goodsInfo);
+			System.out.println(this.size());
+			this.remove(goods);
+			System.out.println(this.size());
 		}
 		countTotal();
+		count = this.size();
+		if(count == 0){
+			total = new Double(0.0);
+		}
 	}
 	
 	/**

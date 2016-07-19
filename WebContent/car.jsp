@@ -16,15 +16,22 @@
 <link href="<%=basePath %>css/base.css" rel="stylesheet">
 <script type="text/javascript" src="<%=basePath %>js/jquery-1.6.4.js"></script>
 <script type="text/javascript" language="javascript" >
-	function changerBuyQuantity(obj) {
-		if (obj === 1) {
-			$("#buy-num").val(parseInt($("#buy-num").val()) + 1);
+	function changeBuyQuantity(obj,id) {
+		var byStr = document.getElementById(id);
+		var byNum = parseInt(byStr.value);
+		
+		if (byNum <= 1 && obj == 0) {//参数为0并且数量为1则不能再减
+			byStr.value=1;
 		} else {
-			if ($("#buy-num").val() <= 1)
-				$("#buy-num").val(1);
+			if (obj == 0)
+				byStr.value = (byNum-1);
 			else
-				$("#buy-num").val($("#buy-num").val() - 1);
+				byStr.value = (byNum+1);
 		}
+		
+		//请求服务器处理
+		 location.href = "<%=basePath%>car/carActionaddOrUpdate.action?goodsCode="+id
+ 		+"&quantity="+byStr.value+"";
 	}
 	
 </script>
@@ -61,10 +68,10 @@
         </ul>
         <span class="clr"></span>
     </div>
-</div>
+</div>l
 <div class="w header clearfix">
     <div id="logo">
-        <a href="index.html" class="link1"><img src="<%=basePath%>img/logo-201305.png" alt="京东商城"></a>
+        <a href="<%=basePath%>index.jsp" class="link1"><img src="<%=basePath%>img/logo-201305.png" alt="京东商城"></a>
         <a href="#none" class="link2"><b></b>购物车</a>	</div>
     <div class="cart-search">
         <div class="form">
@@ -107,8 +114,8 @@
                                                                                       全选
                         </div>
                         <div class="column t-goods">商品</div>
-                        <div class="column t-props"></div>
-                        <div class="column t-price">单价(元)</div>
+<!--                         <div class="column t-props"></div>
+ -->                        <div class="column t-price">单价(元)</div>
                         <div class="column t-quantity">数量</div>
                         <div class="column t-sum">小计(元)</div>
                         <div class="column t-action">操作</div>
@@ -118,13 +125,9 @@
                             <div class="cart-tbody" id="vender_66621">
                                 <div class="shop">
                                     <div class="cart-checkbox">
-                                        <input type="checkbox" name="checkShop" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_shop">
-                                        <label for="">勾选店铺内全部商品</label>
+<!--                                         <input type="checkbox" name="checkShop" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_shop">
+ -->                                        <label for="">勾选店铺内全部商品</label>
                                     </div>
-		<span class="shop-txt">
-												<a class="shop-name" href="goodsdetails.html" target="_blank" id="venderId_66621" clstag="clickcart|keycount|xincart|cart_shopName" shopid="62888">海澜之家京东旗舰店</a><a class="btn-im" _vid="66621" href="javascript:;" clstag="pageclick|keycount|cart__201503041|4">联系客服</a>
-									</span>
-                                    <div class="shop-extra-r" id="shop-extra-r_66621" totalprice="156.00" venderfreight="10.00" freeshippingprice="68.00" venderid="66621" freightpattern="1" venderfreighttype="1" checkedskuids="10124632023,10124630019">购满￥68.00 已免运费 </div>
                                 </div>
                                 <div class="item-list" style="z-index: auto;">
                                     <!--单品-->
@@ -132,17 +135,17 @@
                                     <!-- 单品-->
                                     <!-- 单品-->
                                     <!-- 单品-->
-                                  <c:forEach items="${sessionScope.car }" var="goods">
-                                    <div class="item-single  item-item item-selected  " id="product_10124632023" style="z-index: auto;">
+                                    <c:forEach items="${sessionScope.car }" var="goods">
+                                    <div class="item-single  item-item item-selected  " id="" >
                                         <div class="item-form">
-                                            <div class="cell p-checkbox">
                                                 <div class="cart-checkbox">
                                                     <!--单品-->
+                                                    
                                                     <input p-type="10124632023_1" type="checkbox" name="checkItem" value="10124632023_1" checked="checked" data-bind="cbid" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_sku">
                                                     <label for="" class="checked">勾选商品</label>
                                                     <span class="line-circle"></span>
-                                                </div>
-                                            </div>
+<!--                                      <input type="checkbox" name="checkShop" class="jdcheckbox" clstag="clickcart|keycount|xincart|cart_checkOn_shop">
+ -->                                                </div>
                                             <div class="cell p-goods">
                                                 <div class="goods-item">
                                                     <div class="p-img">
@@ -177,14 +180,11 @@
                                                 <!--单品-->
                                                 <div class="quantity-form">
                                                 
-                                                    <!-- <input type="text" class="itxt" value="1" id="buy-num" 	readonly="readonly"/> -->
-<!--                                                     <a class="btn-reduce" onclick="changerBuyQuantity(0)" href="javascript:;">-</a>
- -->                                                <a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" onclick="changerBuyQuantity(0)" class="decrement" id="decrement_66621_10124632023_1_1">-</a>
-                                                      <input autocomplete="off" type="text" class="itxt" value="${goods.quantity }" id="buy-num">
-                                                   <a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" onclick="changerBuyQuantity(1)"  class="increment" id="increment_66621_10124632023_1_1_0">+</a>
+                                                <a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" onclick="changeBuyQuantity(0,'${goods.goodsCode}')" class="decrement" >-</a>
+                                                      <input id="${goods.goodsCode }" autocomplete="off" type="text" class="itxt" value="${goods.quantity }">
+                                                <a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" onclick="changeBuyQuantity(1,'${goods.goodsCode}')"  class="increment" id="increment_66621_10124632023_1_1_0">+</a>
                                                    
-<!--                                                    <a class="btn-add" onclick="changerBuyQuantity(1)" href="javascript:;">+</a>
- -->                                                </div>
+                                               </div>
                                                 <div class="ac ftx-03 quantity-txt" _stock="stock_10124632023">有货</div>
                                             </div>
                                             <div class="cell p-sum">
@@ -195,7 +195,7 @@
                                                 <a id="remove_66621_10124632023_1" clstag="clickcart|keycount|xincart|cart_sku_del" 
                                                 data-name="" 
                                                 data-more="removed_78.00_1" class="cart-remove" 
-                                                href="javascript:void(0);" href="<%=basePath%>#?goodsCode=${goods.goodsCode}">删除</a>
+                                                 href="<%=basePath%>car/carActionremoveSingleGoods.action?goodsCode=${goods.goodsCode}">删除</a>
                                             </div>
                                         </div>
                                         <div class="item-extra">
@@ -235,7 +235,7 @@
                                 <div class="normal">
                                     <div class="comm-right">
                                         <div class="btn-area">
-                                            <a href="jiesuan.html" target="_blank" class="submit-btn" data-bind="1">
+                                            <a href="<%=basePath %>jiesuan.jsp" target="_blank" class="submit-btn" data-bind="1">
                                                                                                                                                                     去结算
                                                 <b></b>
                                             </a>
