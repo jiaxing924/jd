@@ -1,5 +1,9 @@
 package com.ssh.jd.model.order.service;
 
+import java.io.Serializable;
+import java.util.List;
+
+import com.ssh.jd.model.order.pojo.OrderItem;
 import com.ssh.jd.model.order.pojo.OrderMain;
 
 /**
@@ -9,6 +13,9 @@ import com.ssh.jd.model.order.pojo.OrderMain;
  * @date 2016年7月18日 下午7:58:04
  */
 public interface IOrderMainService {
-	OrderMain loadOrderMainByOrderCode(String name) throws Exception;
-	void addOrderMain(OrderMain orderMain)throws Exception;
+	 //创建订单
+    public Serializable createOrder(OrderMain order,List<OrderItem> orderItemList)throws Exception;
+    
+    //按照用户id查询订单
+    public List<OrderMain> searchOrderMainByUser(String ownerId,int tag)throws Exception;
 }

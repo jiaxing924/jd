@@ -15,13 +15,21 @@
 <title>结算中心</title>
 <link href="css/base.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+  <script type="text/javascript">
+
+		function saveOrder(){
+
+			var desc = $("#remarkText").val(); 
+			location.href = "<%=basePath%>order/orderActionaddOrder.action?description="+desc;
+		}
+    </script>
 </head>
 <body>
 <div id="shortcut-2014">
     <div class="w">
         <ul class="fr">
             <li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">你好， 
-            	<a href="login.jsp" class="link-login  style-red">${sessionScope.currentUser.name}&nbsp;</a>
+            	<a href="<%=basePath%>goods/goodsActionloadGoodsTypeList.action" class="link-login  style-red">${sessionScope.currentUser.name}&nbsp;</a>
             	<c:if test="${not empty sessionScope.currentUser}">
             		&nbsp;&nbsp;<a href="<%=basePath%>login.jsp" class="link-regist">退出</a> 
             	</c:if>
@@ -34,13 +42,13 @@
             <li class="spacer"></li>
             <li class="fore2" clstag="h|keycount|2015|01c">
                 <div class="dt">
-                    <a href="myjd.html">我的订单</a>
+                    <a href="<%=basePath%>order/orderActionloadOrder.action">我的订单</a>
                 </div>
             </li>
             <li class="spacer"></li>
             <li class="fore3" clstag="h|keycount|2015|01c">
                 <div class="dt">
-                    <a href="myjd.html">我的京东</a>
+                    <a href="<%=basePath%>order/orderActionloadOrder.action">我的京东</a>
                 </div>
             </li>
 
@@ -50,7 +58,7 @@
 </div>
 <div class="w header clearfix">
     <div id="logo">
-        <a href="<%=basePath %>" class="link1"><img src="img/logo-201305.png" alt="京东商城"></a>
+        <a href="<%=basePath%>goods/goodsActionloadGoodsTypeList.action" class="link1"><img src="img/logo-201305.png" alt="京东商城"></a>
         <a href="#none" class="link3"><b></b></a>	</div>
     <div class="cart-search">
         <div class="form">
@@ -335,7 +343,7 @@
             <!--添加备注信息-->
             <div class="order-remarks hide" id="orderRemarkItem" style="display: block;"><div class="remark-tit">添加订单备注</div><div id="remarkId" style="margin-bottom:7px">  
             <div class="form remark-cont">    
-            <input type="text" id="remarkText" maxlength="45" size="15" class="itxt itxt01" placeholder="定制类商品，请在备注中做详细说明" 
+            <input type="text" name="desc" id="remarkText" maxlength="45" size="15" class="itxt itxt01" placeholder="定制类商品，请在备注中做详细说明" 
             onblur="if(this.value==''||this.value=='定制类商品，请在备注中做详细说明'){this.value='定制类商品，请在备注中做详细说明';this.style.color='#cccccc'}" 
             onfocus="if(this.value=='定制类商品，请在备注中做详细说明') {this.value='';};this.style.color='#000000';">    
              <span class="ftx-03 ml10">&nbsp;&nbsp;提示：请勿填写有关支付、收货、发票方面的信息</span>  </div></div></div>
@@ -374,15 +382,8 @@
                             </div>
                             <div class="coupon-tab-panel-main ml20" id="coupons">
                                 <!--coupon tab-->
-
-
                                 </div>
-                          
-                              
                                 </div>
-                               
-
-
                         </div>
                     </div>
                     <!-- giftcard -->
@@ -550,9 +551,9 @@
                                 提交订单<b></b> 
                             </button>
                            -->
-                            <a href="<%=basePath %>order/orderActionaddOrder.action"  class="checkout-submit" id="order-submit" >
+                            <button onclick="saveOrder()"  class="checkout-submit" id="order-submit" >
                                 提交订单<b></b>
-                            </a>
+                            </button>
 
                             <span id="checkCodeDiv"></span>
 

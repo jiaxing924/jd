@@ -11,13 +11,22 @@ import java.util.Date;
 public class OrderMain {
 	private String id;
 	private String orderCode;// 订单编号
-	private String owner;// 订单所有者
+	private String ownerId;// 订单所有者编号
 	private Double total;// 订单总计
 	private String phone;// 详细电话
 	private String address;// 地址
 	private Integer status;// 订单状态
 	private Date confirmTime;// 确认时间
 	private String description;// 订单描述
+	private Integer isComment;//是否评论
+
+	public Integer getIsComment() {
+		return isComment;
+	}
+
+	public void setIsComment(Integer isComment) {
+		this.isComment = isComment;
+	}
 
 	public String getId() {
 		return id;
@@ -35,12 +44,12 @@ public class OrderMain {
 		this.orderCode = orderCode;
 	}
 
-	public String getOwner() {
-		return owner;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public Double getTotal() {

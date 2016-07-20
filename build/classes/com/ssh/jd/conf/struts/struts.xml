@@ -52,11 +52,11 @@
 	        <result name="showOrder">/order.jsp</result>
 	        <result name="addSuccess" type="redirectAction">
 	            <param name="namespace">/order</param>
-	            <param name="actionName">OrderAction</param>
-	            <param name="method">showOrder</param>
+	            <param name="actionName">orderAction</param>
+	            <param name="method">loadOrder</param>
 	        </result>
 	        <allowed-methods>
-	        showOrder,addOrder
+	        loadOrder,addOrder
 	        </allowed-methods>
 	    </action>
 	</package>

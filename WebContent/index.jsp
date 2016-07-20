@@ -35,13 +35,13 @@
 			<li class="spacer"></li>
 			<li class="fore2" clstag="h|keycount|2015|01c">
 				<div class="dt">
-					<a href="myjd.html">我的订单</a>
+					<a href="<%=basePath%>order/orderActionloadOrder.action">我的订单</a>
 				</div>
 			</li>
 			<li class="spacer"></li>
 			<li class="fore3" clstag="h|keycount|2015|01c">
 				<div class="dt">
-					<a href="myjd.html">我的京东</a>
+					<a href="<%=basePath%>order/orderActionloadOrder.action">我的京东</a>
 				</div>
 			</li>
 

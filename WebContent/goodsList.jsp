@@ -20,7 +20,7 @@
 		<div class="w">
 			<ul class="fr">
 				<li class="fore1" id="ttbar-login" clstag="h|keycount|2015|01b">
-					<a href="myjd.html" class="link-login  style-red">
+					<a href="<%=basePath%>goods/goodsActionloadGoodsTypeList.action" class="link-login  style-red">
 					    <c:if test="${not empty sessionScope.currentUser.name }">
 					                       你好，${sessionScope.currentUser.name }&nbsp;&nbsp;
 					       <a href="<%=basePath%>login.jsp" > 退出</a>&nbsp;&nbsp;
@@ -33,13 +33,13 @@
 				<li class="spacer"></li>
 				<li class="fore2" clstag="h|keycount|2015|01c">
 					<div class="dt">
-						<a href="myjd.html">我的订单</a>
+						<a href="<%=basePath%>order/orderActionloadOrder.action">我的订单</a>
 					</div>
 				</li>
 				<li class="spacer"></li>
 				<li class="fore3" clstag="h|keycount|2015|01c">
 					<div class="dt">
-						<a href="myjd.html">我的京东</a>
+						<a href="<%=basePath%>order/orderActionloadOrder.action">我的京东</a>
 					</div>
 				</li>
 
@@ -49,7 +49,7 @@
 	</div>
 	<div class="w">
 		<div id="logo-2014" clstag="h|keycount|2015|02a">
-			<a href="index.html" class="logo">京东</a>
+			<a href="<%=basePath%>goods/goodsActionloadGoodsTypeList.action" class="logo">京东</a>
 		</div>
 		<div id="search-2014">
 			<ul id="shelper" class="hide"></ul>
