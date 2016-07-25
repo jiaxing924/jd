@@ -1,5 +1,7 @@
 package com.ssh.jd.model.order.pojo;
 
+import com.ssh.jd.model.goods.pojo.GoodsInfo;
+
 /**
  * <p>Title:OrderItem</p>
  * <p>Description:订单项表</p>
@@ -14,6 +16,17 @@ public class OrderItem {
 	private Integer quantity;// 数量
 	private String description;// 订单描述
 	private Integer isComment;// 是否评论
+	
+    private GoodsInfo goodsInfo;
+    
+
+	public GoodsInfo getGoodsInfo() {
+		return goodsInfo;
+	}
+
+	public void setGoodsInfo(GoodsInfo goodsInfo) {
+		this.goodsInfo = goodsInfo;
+	}
 
 	public String getId() {
 		return id;

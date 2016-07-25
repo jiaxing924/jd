@@ -19,6 +19,7 @@ public class OrderMain {
 	private Date confirmTime;// 确认时间
 	private String description;// 订单描述
 	private Integer isComment;//是否评论
+	
 
 	public Integer getIsComment() {
 		return isComment;

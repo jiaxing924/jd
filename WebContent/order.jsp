@@ -145,8 +145,8 @@
 
                         <div class="tr-operate">
                 	                        <span class="order-shop">
-                            <a href="<%=basePath%>goods/goodsActionloadGoodsDetails.action?goodsCode=${sessionScope.car[0].goodsCode}" target="_blank" class="shop-txt venderName117760" clstag="click|keycount|orderlist|117760">
-                             ${sessionScope.car[0].producer}</a>
+                            <a href="<%=basePath%>goods/goodsActionloadGoodsDetails.action?goodsCode=${requestScope.goodsInfo.goodsCode}" target="_blank" class="shop-txt venderName117760" clstag="click|keycount|orderlist|117760">
+                             ${requestScope.goodsInfo.producer}</a>
                         </span>
 
                         <span class="tel">
@@ -164,13 +164,12 @@
                         <div class="goods-item p-10253396315">
                             <div class="p-img">
                                 <a href="goodsdetails.html" clstag="click|keycount|orderinfo|order_product" target="_blank">
-                                    <img class="" src="<%=basePath%>imgs/.jpg" title="" data-lazy-img="done" width="60" height="60">
-
+                                    <img class="" src="<%=basePath%>imgs/${requestScope.goodsInfo.img}.jpg" title=""  width="60" height="60">
                                 </a>
                             </div>
                             <div class="p-msg">
-                                <div class="p-name"><a href="goodsdetails.html" class="a-link" clstag="click|keycount|orderinfo|order_product" target="_blank" title="#">
-                                   ${sessionScope.car[0].goodsName}</a>
+                                <div class="p-name"><a href="<%=basePath%>goods/goodsActionloadGoodsDetails.action?goodsCode=${requestScope.goodsInfo.goodsCode}" class="a-link" clstag="click|keycount|orderinfo|order_product" target="_blank" title="#">
+                                   ${requestScope.goodsInfo.goodsName}</a>
                                 </div>
                                 <div class="p-extra">
                                     <ul class="o-info">
@@ -180,7 +179,7 @@
                             </div>
                         </div>
                         <div class="goods-number">
-                            ×${sessionScope.car[0].quantity}
+                            ×${orderMain.total/requestScope.goodsInfo.price }
                         </div>
 
 

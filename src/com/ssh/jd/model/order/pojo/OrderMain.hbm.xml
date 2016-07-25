@@ -35,5 +35,6 @@
         <property name="isComment" type="java.lang.Integer">
             <column name="isComment" />
         </property>
+        
     </class>
 </hibernate-mapping>

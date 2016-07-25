@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 
 import com.ssh.jd.model.car.pojo.Car;
 import com.ssh.jd.model.goods.pojo.GoodsInfo;
+import com.ssh.jd.model.goods.service.IGoodsService;
 import com.ssh.jd.model.order.pojo.OrderItem;
 import com.ssh.jd.model.order.pojo.OrderMain;
+import com.ssh.jd.model.order.service.IOrderItemService;
 import com.ssh.jd.model.order.service.IOrderMainService;
 import com.ssh.jd.model.user.pojo.User;
 
@@ -27,36 +29,55 @@ import com.ssh.jd.model.user.pojo.User;
  */
 @Controller("OrderAction")
 public class OrderAction {
-	
+
 	@Resource(name = "OrderMainServiceImp")
 	private IOrderMainService service;
+
+	@Resource(name = "OrderItemServiceImp")
+	private IOrderItemService orderItemService;
 	
-	private String description;//订单描述，传入参数
+	@Resource(name = "GoodsServiceImp")
+	private IGoodsService goodsService;
 	
-	private Integer isComment = 0; //0表示未评论
-	
-	private String orderId;//订单编号
-	
-	private List<OrderMain> orderMainList;//主订单列表，返回数据
-	
-	private List<OrderItem> orderItemList;//订单项列表，返回数据
-	
+	private GoodsInfo goodsInfo;
+
+	private String description;// 订单描述，传入参数
+
+	private Integer isComment = 0; // 0表示未评论
+
+	private String orderId;// 订单编号
+
+	private List<OrderMain> orderMainList;// 主订单列表，返回数据
+
+	private List<OrderItem> orderItemList;// 订单项列表，返回数据
+
 	/**
 	 * 通过用户id加载订单
 	 * @return String
 	 */
-	public String loadOrder(){
+	public String loadOrder() {
 		System.out.println("咋不执行呢？？？？？");
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		try {
 			User user = (User) session.getAttribute("currentUser");
-			if(user == null){
+			if (user == null) {
 				return "doLogin";
 			}
+			//orderMainList = service.searchOrderMainByUser(user.getId(), isComment);
+			// orderItemList = service.
+
 			orderMainList = service.searchOrderMainByUser(user.getId(), isComment);
-			
+
+			System.out.println(orderMainList + "I'm here" + orderMainList.get(0).getOrderCode());
+
+			orderItemList = orderItemService.searchOrderItemByOrderCode(orderMainList.get(0).getOrderCode());
+			System.out.println(orderItemList + "...............");
+
+			goodsInfo = goodsService.loadGoodsDetailsByGoodsCode(orderItemList.get(0).getGoodsCode());
+			System.out.println(goodsInfo.getGoodsName() + ":" + goodsInfo.getGoodsCode());
+
 			System.out.println("*****？？？？？");
-			if(orderMainList == null){
+			if (orderMainList == null) {
 				return "doLogin";
 			}
 		} catch (Exception e) {
@@ -65,34 +86,34 @@ public class OrderAction {
 		}
 		return "showOrder";
 	}
-	
+
 	/**
 	 * 添加订单
 	 * @return String
 	 */
-	public String addOrder(){
+	public String addOrder() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		User user = (User) session.getAttribute("currentUser");//获取当前用户
-		Car car = (Car) session.getAttribute("car");//获取购物车
-		
-		OrderMain orderMain = new OrderMain();//创建主订单对象
-		
-		orderMain.setOrderCode("OID"+user.getId()+String.valueOf(new Date().getTime()));//生成订单编号
+		User user = (User) session.getAttribute("currentUser");// 获取当前用户
+		Car car = (Car) session.getAttribute("car");// 获取购物车
+
+		OrderMain orderMain = new OrderMain();// 创建主订单对象
+
+		orderMain.setOrderCode("OID" + user.getId() + String.valueOf(new Date().getTime()));// 生成订单编号
 		orderMain.setOwnerId(user.getId());
 		orderMain.setTotal(car.getTotal());
 		orderMain.setPhone(user.getPhone());
 		orderMain.setAddress(user.getAddress());
-		orderMain.setStatus(0);//0表示未处理
-		orderMain.setConfirmTime(new Timestamp(new Date().getTime()));//订单提交时间
-		orderMain.setIsComment(0);//0表示未评论
-        
-		if(!description.trim().equals("")){
+		orderMain.setStatus(0);// 0表示未处理
+		orderMain.setConfirmTime(new Timestamp(new Date().getTime()));// 订单提交时间
+		orderMain.setIsComment(0);// 0表示未评论
+
+		if (!description.trim().equals("")) {
 			orderMain.setDescription(description);
 		}
-		
+
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-		
-		for(GoodsInfo goods: car){
+
+		for (GoodsInfo goods : car) {
 			OrderItem item = new OrderItem();
 			item.setGoodsCode(goods.getGoodsCode());
 			item.setQuantity(goods.getQuantity());
@@ -100,11 +121,10 @@ public class OrderAction {
 			item.setDescription("描述");
 			orderItemList.add(item);
 		}
-		
-		
+
 		try {
-			Serializable id = service.createOrder(orderMain, orderItemList);//存入订单
-			if(id != null){
+			Serializable id = service.createOrder(orderMain, orderItemList);// 存入订单
+			if (id != null) {
 				car.clearCar();
 			}
 		} catch (Exception e) {
@@ -112,8 +132,6 @@ public class OrderAction {
 		}
 		return "addSuccess";
 	}
-
-
 
 	public String getOrderId() {
 		return orderId;
@@ -153,6 +171,14 @@ public class OrderAction {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public GoodsInfo getGoodsInfo() {
+		return goodsInfo;
+	}
+
+	public void setGoodsInfo(GoodsInfo goodsInfo) {
+		this.goodsInfo = goodsInfo;
 	}
 
 }

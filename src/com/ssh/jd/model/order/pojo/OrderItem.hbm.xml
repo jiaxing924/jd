@@ -3,25 +3,30 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-7-19 13:47:33 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.ssh.jd.model.order.pojo.OrderItem" table="orderitem">
-        <id name="id" type="java.lang.String">
-            <column name="id" />
-            <generator class="uuid" />
-        </id>
-        <property name="orderId" type="java.lang.String">
-            <column name="orderId" />
-        </property>
-        <property name="goodsCode" type="java.lang.String">
-            <column name="goodsCode" />
-        </property>
-        <property name="quantity" type="java.lang.Integer">
-            <column name="quantity" />
-        </property>
-        <property name="description" type="java.lang.String">
-            <column name="description" />
-        </property>
-        <property name="isComment" type="java.lang.Integer">
-            <column name="isComment" />
-        </property>
-    </class>
+	<class name="com.ssh.jd.model.order.pojo.OrderItem" table="orderitem">
+		<id name="id" type="java.lang.String">
+			<column name="id" />
+			<generator class="uuid" />
+		</id>
+		<property name="orderId" type="java.lang.String">
+			<column name="orderId" />
+		</property>
+		<property name="goodsCode" type="java.lang.String">
+			<column name="goodsCode" />
+		</property>
+		<property name="quantity" type="java.lang.Integer">
+			<column name="quantity" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+		<property name="isComment" type="java.lang.Integer">
+			<column name="isComment" />
+		</property>
+		
+		<!-- <many-to-one name="goodsInfo" class="com.ssh.jd.model.goods.pojo.GoodsInfo"
+			column="goodsCode" insert="false" update="false">
+
+		</many-to-one> -->
+	</class>
 </hibernate-mapping>
